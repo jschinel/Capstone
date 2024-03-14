@@ -31,7 +31,14 @@ export default function AuthFormPage({setNoReload}) {
         }
         setNoReload(true)
         // redirect to the home page after signing/logging in
-        navigate(localStorage.getItem('url'))
+        if(localStorage.getItem('url')!="/auth/signup" && localStorage.getItem('url')!="/auth/login")
+        {
+            navigate(localStorage.getItem('url'))            
+        }
+        else
+        {
+            navigate('/')            
+        }
     }
 
     let actionText

@@ -60,6 +60,40 @@ export default function App() {
         <>
             <div className="flex-col min-h-[100vh]">
                     {toggleMenu==true ? (
+                        <>
+                            <div className='flex justify-between px-5 py-3 bg-[#607466] list-none text-black font-bold text-lg md:text-3xl sm:text-2xl'>
+                            <Link to="/">
+                                <li className="hover:text-[#C19A6B]"><span>&#9776;</span></li>
+                            </Link>
+                            <div className="flex lg:gap-5 md:gap-4 sm:gap-3 gap-2" style={{display: authInActive}}>
+                                <Link onClick= {()=>{
+                                    setNoReload(true)
+                                    setToggleMenu(!toggleMenu)
+                                    localStorage.setItem('url',pathName)
+                                }} to="/auth/signup">
+                                    <li className="pr-5 hover:text-[#C19A6B]">Sign Up</li>
+                                </Link>
+                                <Link onClick= {()=>{
+                                    setToggleMenu(!toggleMenu)
+                                    localStorage.setItem('url',pathName)
+                                    setNoReload(true)}} to="/auth/login">
+                                    <li className="hover:text-[#C19A6B]">Log In</li>
+                                </Link>
+                            </div>
+                            <div className="flex lg:gap-5 md:gap-4 sm:gap-3 gap-2" style={{display: authActive}}>
+                                <Link to="/profile">
+                                    <img src="/icons8-user-profile-32.png"/>
+                                </Link> 
+                                <button className="hover:text-[#C19A6B]"onClick={()=>
+                                    {
+                                        localStorage.clear()
+                                        setAuthActive('none')
+                                        setAuthInActive('flex')
+                                        setUserPermission(false)
+                                        navigate("/")
+                                    }}>Log Out</button>
+                            </div>
+                        </div>
                         <div className="flex flex-col justify-center items-center fixed bg-[#475841] w-[100%] h-[100vh] list-none text-black font-bold text-5xl">
                             <Link onClick= {()=>{setNoReload(false), setToggleMenu(!toggleMenu)}} to="/">
                                 <li className="hover:text-[#C19A6B]">Home</li>
@@ -70,13 +104,13 @@ export default function App() {
                             <Link onClick= {()=>{setNoReload(false), setToggleMenu(!toggleMenu)}} to="/wordplay/quotes ">
                                 <li className="hover:text-[#C19A6B]">Learn Something New</li>
                             </Link>
-                            <Link onClick= {()=>{setNoReload(false), setToggleMenu(!toggleMenu)}} to="/calendar">
-                                <li className="hover:text-[#C19A6B]">Schedule Your Day</li>
-                            </Link>
-                            <Link onClick= {()=>{setNoReload(false), setToggleMenu(!toggleMenu)}} to="/music ">
-                                <li className="hover:text-[#C19A6B]">Music</li>
-                            </Link> 
-                        </div>  
+                            {userPermission ? (
+                                <Link onClick= {()=>{setNoReload(false), setToggleMenu(!toggleMenu)}} to="/calendar">
+                                    <li className="hover:text-[#C19A6B]">Schedule Your Day</li>
+                                </Link>
+                            ):null}
+                        </div>
+                    </>  
                     ):null}
                     <div className='flex justify-between px-5 py-3 bg-[#607466] list-none text-black font-bold text-lg md:text-3xl sm:text-2xl'>
                         <Link onClick= {()=>{setNoReload(false), setToggleMenu(!toggleMenu)}} to="/">
@@ -101,11 +135,11 @@ export default function App() {
                             </Link> 
                             <button className="hover:text-[#C19A6B]"onClick={()=>
                                 {
-                                    localStorage.removeItem('userToken')
-                                    localStorage.removeItem('email')
+                                    localStorage.clear()
                                     setAuthActive('none')
                                     setAuthInActive('flex')
                                     setUserPermission(false)
+                                    navigate("/")
                                 }}>Log Out</button>
                         </div>
                     </div>
@@ -119,9 +153,7 @@ export default function App() {
                     <Route path="/auth/:formType" element={<AuthFormPage setNoReload={setNoReload}/>} />
                     <Route path="/auth/:formType" element={<AuthFormPage setNoReload={setNoReload}/>} />
                         
-                    <Route path="/music" element={<Spotify/>} />
-                    <Route path="/music/:code" element={<Spotify/>} />
-
+                    <Route path="/:code" element={<Spotify/>} />
                     
                     <Route path="/jokes/general" element={<Jokes_HomePage userPermission={userPermission} noReload={noReload} setNoReload={setNoReload}/>} />
                     <Route path="/jokes/dad" element={<Jokes_HomePage userPermission={userPermission} noReload={noReload} setNoReload={setNoReload} />} />
@@ -132,7 +164,7 @@ export default function App() {
                     <Route path="/wordplay/quotes" element={<WordPlay_HomePage userPermission={userPermission} noReload={noReload} setNoReload={setNoReload} />} />
                 </Routes>
             </div>
-            {pathName!= "/music" ? (
+            {userPermission ? (
                 <>
                     <div className="bottom-0 bg-[#607466]" style= {{opacity: spotifyFooter, position: spotifyPosition, left: 10000}}>
                         <button

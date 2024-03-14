@@ -199,7 +199,6 @@ export default function Spotify()
     async function refreshTokenClick() {
         const token = await refreshToken();
         currentToken.save(token);
-        navigate("/music")
     }
 
     async function refreshToken() {

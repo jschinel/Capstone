@@ -12,7 +12,7 @@ export default function HomePage({setNoReload})
                 <br />
                 <br />
                 <br />
-                <p className="text-center text-4xl">Sift through 1000s of different jokes, solve some riddles or maybe try to learn some new words! Got a spotify account? You can even play your own spotify music, simply log in and search your song</p>
+                <p className="text-center text-4xl">Sift through 1000s of different jokes, solve some riddles or maybe try to learn some new words! Log in or create an account to gain access to your personal spotify music and calender!</p>
             </div>
         </>
     )
