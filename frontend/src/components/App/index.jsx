@@ -58,7 +58,7 @@ export default function App() {
     //  Create the HTML using JSX for the App component fixing
     return (
         <>
-            <div className="flex-col min-h-[100vh]">
+            <div className="flex-col min-h-[100vh] w-[100dvw] overflow-x-clip">
                     {toggleMenu==true ? (
                         <>
                             <div className='flex justify-between px-5 py-3 bg-[#607466] list-none text-black font-bold text-lg md:text-3xl sm:text-2xl'>

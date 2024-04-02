@@ -79,8 +79,8 @@ export default function EventModalEditDelete({getData, displayEditModal, setDisp
     if(eventData)
     { 
         return(
-            <div className="flex flex-col h-screen w-full fixed left-0 top-0 flex justify-center items-center border border-gray-500">
-                <header className="w-1/4 bg-gray-100 px-4 py-2 flex justify-between items-center border border-gray-500">
+            <div className="flex flex-col h-screen w-full fixed left-0 top-0 justify-center items-center border border-gray-500">
+                <header className="w-3/4 md:w-1/4 bg-gray-100 px-4 py-2 flex justify-between items-center border border-gray-500">
                     <span className="">
                         Calendar Event
                     </span>
@@ -91,7 +91,7 @@ export default function EventModalEditDelete({getData, displayEditModal, setDisp
                     </button>
                 </header>
                 {editForm==false ? (
-                    <div className="bg-white rounded-lg shadow-2xl w-1/4">
+                    <div className="bg-white rounded-lg shadow-2xl w-3/4 md:w-1/4">
                         <div className="flex flex-col border border-gray-500">
                             <div className="p-5">
                                 <div className="flex border border-gray-500">
@@ -139,7 +139,7 @@ export default function EventModalEditDelete({getData, displayEditModal, setDisp
                     </div>
                 )
                 :
-                <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-2xl w-1/4">
+                <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-2xl w-3/4 md:w-1/4">
                     <div className="flex flex-col border border-gray-500">
                         <div className="p-5">
                             <div className="flex border border-gray-500">
@@ -166,7 +166,7 @@ export default function EventModalEditDelete({getData, displayEditModal, setDisp
                                     <input
                                         type="text"
                                         id="description"
-                                        className="w-full h-[10dvh] p-2 border overflow-scroll"
+                                        className="w-[100dvw] h-[10dvh] p-2 border overflow-scroll"
                                         style={{ whiteSpace: 'normal' }}
                                         onChange={handleDescriptionChange} 
                                         value={editDescription}

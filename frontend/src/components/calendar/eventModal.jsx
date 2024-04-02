@@ -34,8 +34,8 @@ export default function EventModal({setDisplayModal, event1, event2}) {
     };
     // console.log(localStorage.getItem('eventData'))
     return(
-        <div className="flex flex-col h-screen w-full fixed left-0 top-0 flex justify-center items-center border border-gray-500">
-            <header className="w-1/4 bg-gray-100 px-4 py-2 flex justify-between items-center border border-gray-500">
+        <div className="flex flex-col h-screen w-[100dvw] fixed left-0 top-0 flex justify-center items-center border border-gray-500">
+            <header className="w-3/4 md:w-1/4 bg-gray-100 px-4 py-2 flex justify-between items-center border border-gray-500">
                 <span className="">
                     Calendar Event
                 </span>
@@ -43,7 +43,7 @@ export default function EventModal({setDisplayModal, event1, event2}) {
                     close                
                 </button>
             </header>
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-2xl w-1/4">
+            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-2xl w-3/4 md:w-1/4">
                 <div className="flex flex-col border border-gray-500">
                     <div className="p-5">
                         <div className="flex border border-gray-500">

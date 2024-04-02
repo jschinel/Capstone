@@ -41,13 +41,15 @@ export default function Calendar(){
     if(loadingComplete==true)
     {
         return(
-            <div className='h-screen flex flex-col bg-white'>
+            <div className='h-fit min-h-[90dvh] flex flex-col bg-white '>
                 <div style={{display:displayModal}}>
                     <EventModal setDisplayModal={setDisplayModal} event1={event1} event2={event2}></EventModal>               
                 </div>
-                <Header setMonthIndex={setMonthIndex} monthIndex={monthIndex} yearIndex={yearIndex} setYearIndex={setYearIndex}></Header>
+                <Header setDisplayModal={setDisplayModal} setMonthIndex={setMonthIndex} monthIndex={monthIndex} yearIndex={yearIndex} setYearIndex={setYearIndex}></Header>
                 <div className='flex flex-1'>
-                    <Sidebar setDisplayModal={setDisplayModal} month={monthIndex} year={yearIndex} setMonthIndex={setMonthIndex} setYearIndex={setYearIndex}></Sidebar>
+                    <div className='hidden md:flex'>
+                        <Sidebar setDisplayModal={setDisplayModal} month={monthIndex} year={yearIndex} setMonthIndex={setMonthIndex} setYearIndex={setYearIndex}></Sidebar>
+                    </div>
                     <Month month = {currentMonth} userEvents={userEvents} setDisplayModal={setDisplayModal} getData={getData}></Month>
                 </div>
             </div>

@@ -82,23 +82,23 @@ export default function Day({getData, day, rowIdx, userEvents, month}) {
                 <p className={`text-sm p-1 my-1 text-center" ${getCurrentDayClass()}`}>
                     {day.format('DD')}
                 </p>
-                <div className="w-full flex flex-col gap-1 text-center">
-                    <div onClick={()=>{
+                <div className="w-full flex flex-col gap-1 text-center ">
+                    <div className="truncate w-min-0" onClick={()=>{
                         setModalData(event1Data)
                         setDisplayEditModal('block')}
                     }
-                        style={{display:event1Display, backgroundColor:event1Color}}><span>{event1Data.description}<br /></span></div>
-                    <div onClick={()=>{
+                    style={{display:event1Display, backgroundColor:event1Color}}><span>{event1Data.description}<br /></span></div>
+                    <div className="truncate w-min-0" onClick={()=>{
                         setModalData(event2Data)
                         setDisplayEditModal('block')}
                     } 
                         style={{display:event2Display, backgroundColor:event2Color}}><span>{event2Data.description}<br /></span></div>
-                    <div onClick={()=>{
+                    <div className="truncate w-min-0" onClick={()=>{
                         setModalData(event3Data)
                         setDisplayEditModal('block')}
                     }
                         style={{display:event3Display, backgroundColor:event3Color}}><span>{event3Data.description}<br /></span></div>
-                    <div onClick={()=>{
+                    <div className="truncate w-min-0" onClick={()=>{
                         setModalData(event4Data)
                         setDisplayEditModal('block')}
                     }    
